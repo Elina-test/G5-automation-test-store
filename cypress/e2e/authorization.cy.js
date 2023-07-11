@@ -1,11 +1,14 @@
 import user from '../fixtures/user.json'
 
-describe('Authorization tests', () => {
-
-  it('Authorization with correct credentials and Logout', () => {
+beforeEach ( () => {
     cy.visit('/')
     cy.log('**Opening login form ...**')
     cy.get('#customer_menu_top').click();
+})
+
+describe('Authorization tests', () => {
+
+  it('Authorization with correct credentials and Logout', () => {
 
     cy.get('#loginFrm_loginname').type(user.loginName);
     cy.get('#loginFrm_password').type(user.password);
@@ -23,9 +26,6 @@ describe('Authorization tests', () => {
 })
 
   it('Attempt to log in without password', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.get('#loginFrm_loginname').type(user.loginName);
     cy.get('#loginFrm button').click()
@@ -37,9 +37,6 @@ describe('Authorization tests', () => {
 })
 
   it('Authorization with incorrect login', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.get('#loginFrm_loginname').type(user.loginName + '1');
     cy.get('#loginFrm_password').type(user.password);
@@ -52,9 +49,6 @@ describe('Authorization tests', () => {
 })
 
  it('Authorization with incorrect password', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.get('#loginFrm_loginname').type(user.loginName);
     cy.get('#loginFrm_password').type(user.password + '1');
@@ -67,9 +61,6 @@ describe('Authorization tests', () => {
 })
 
  it('Authorization with space before login', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.get('#loginFrm_loginname').type(' ' + user.loginName);
     cy.get('#loginFrm_password').type(user.password);
@@ -81,9 +72,6 @@ describe('Authorization tests', () => {
 })
 
   it('Authorization with space after login', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.get('#loginFrm_loginname').type(user.loginName + ' ');
     cy.get('#loginFrm_password').type(user.password);
@@ -96,9 +84,6 @@ describe('Authorization tests', () => {
 
 
   it('Reset password', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.log('**Open Forgot your password page...**')
     cy.contains('a', 'Forgot your password?').click()
@@ -117,9 +102,6 @@ describe('Authorization tests', () => {
 })
 
   it('Attempt to Reset password with incorrect login name', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.log('**Open Forgot your password page...**')
     cy.contains('a', 'Forgot your password?').click()
@@ -138,9 +120,6 @@ describe('Authorization tests', () => {
 })
 
   it('Login reminder', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.log('**Open Forgot your login page...**')
     cy.contains('a', 'Forgot your login?').click()
@@ -160,9 +139,6 @@ describe('Authorization tests', () => {
 
 
   it('Login reminder with incorrect Last Name', () => {
-    cy.visit('/')
-    cy.log('**Opening login form ...**')
-    cy.get('#customer_menu_top').click();
 
     cy.log('**Open Forgot your login page...**')
     cy.contains('a', 'Forgot your login?').click()
